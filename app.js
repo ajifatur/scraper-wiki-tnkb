@@ -23,11 +23,13 @@ app.get('/', (req, res) => {
                         let residence = (splitWilayah[0].search(':') >= 0) ? $(splitWilayah[0]).text().trim().replace(':', '') : '';
                         for(var j=0; j<splitWilayah.length; j++) {
                             if(splitWilayah[j].search(':') < 0) {
-                                data.push({
-                                    huruf: $(elem).find('td:nth-child(1) a').text(),
-                                    wilayah: $(splitWilayah[j]).text().trim(),
-                                    residen: residence
-                                });
+                                if($(splitWilayah[j]).text().trim() != '') {
+                                    data.push({
+                                        huruf: $(elem).find('td:nth-child(1) a').text(),
+                                        wilayah: $(splitWilayah[j]).text().trim(),
+                                        residen: residence
+                                    });
+                                }
                             }
                         }
                     }
